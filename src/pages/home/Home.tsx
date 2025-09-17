@@ -16,7 +16,12 @@ export default function Home() {
 
   return (
     <div>{titles.map((item)=>(
-      <h1>{item.author_name}</h1>
-    ))}</div> 
+      <div>
+        <h1>{item.author_name}</h1>
+        <h3>{item.title}</h3>
+        <br />
+      </div>
+    ))}
+    </div> 
   )
 }
