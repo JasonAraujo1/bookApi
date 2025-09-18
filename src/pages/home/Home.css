@@ -1,0 +1,7 @@
+.divBody{
+    border: 1px solid rgba(128, 128, 128, 0.24);
+}
+.divcontainer{
+    margin: 30rem;
+    border: 2px solid rgb(0, 0, 0);
+}
