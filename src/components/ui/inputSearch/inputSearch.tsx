@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useContext } from "react"
 import "./inputSearch.css"
+import Context from "../../../context/Context";
 export default function InputSearch() {
 
-    const [inputData, setInputData] = useState("")
+    const {inputData, setInputData} = useContext(Context);
 
-    console.log(inputData)
+
 
     function handleBuscar(){
         
