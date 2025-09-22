@@ -1,0 +1,69 @@
+#Anotações do UseEfect
+
+## 1. O `if (!inputData) return;`
+
+Esse trecho significa: **"se `inputData` for vazio, nulo ou indefinido, não faça nada"**.
+👉 Usar o `!inputData` evita chamadas desnecessárias para a API quando não existe nada para buscar.
+
+### Exemplos de contexto em que você usa:
+
+* Quando o usuário ainda não digitou nada no input.
+* Quando o valor inicial do estado é `""` (string vazia).
+* Quando a API não aceita query vazia (muitas retornam erro ou resultados irrelevantes).
+
+Então:
+
+```js
+if (!inputData) return;
+```
+
+→ evita que sua função rode à toa no início da aplicação.
+
+---
+
+## 2. O `[inputData]` no `useEffect`
+
+Quando você escreve:
+
+```js
+useEffect(() => {
+  // ...
+}, [inputData])
+```
+
+Está dizendo ao React: **“rode esse efeito toda vez que `inputData` mudar”**.
+
+### Quando usar:
+
+* Sempre que você tiver um valor **dinâmico** (input, estado, props) que, quando mudar, deve disparar uma lógica nova (chamar API, recalcular algo, atualizar DOM etc.).
+* No seu caso, quando `inputData` muda (porque o usuário digitou e clicou em buscar), você quer rodar a função `titleData` de novo.
+
+### Exemplos práticos:
+
+* `[query]`: fazer nova busca quando o termo de busca muda.
+* `[page]`: carregar novos resultados quando a página mudar.
+* `[userId]`: buscar dados de outro usuário quando o ID mudar.
+* `[]`: só rodar uma vez quando o componente monta.
+
+---
+
+## 3. Como identificar quando precisa
+
+Pergunte a si mesmo:
+
+1. **“Quero que essa lógica rode só uma vez?”**
+   → use `[]`.
+2. **“Quero que rode sempre que um valor mudar?”**
+   → coloque esse valor no array, ex: `[inputData]`.
+3. **“E se o valor estiver vazio, quero mesmo chamar a API?”**
+   → se não, use `if (!valor) return;`.
+
+---
+
+### Resumindo
+
+* **`if (!inputData) return;`** → para não rodar a API com dados inválidos/vazios.
+* **`[inputData]`** → para que o `useEffect` reaja às mudanças desse valor.
+
+---
+

@@ -7,12 +7,9 @@ export default function InputSearch() {
 
     const[targetInput, setTargetInput] = useState("")
 
-
-
     function handleBuscar(){
         setInputData(targetInput)
     }
-
 
     return (
         <div className="divInput">
