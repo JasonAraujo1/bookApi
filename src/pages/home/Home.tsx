@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import "./Home.css"
 import InputSearch from "../../components/ui/inputSearch/inputSearch.js"
+import Context from "../../context/Context.js";
 
 export default function Home() {
+
+  const { inputData } = useContext(Context);
 
   const [titles, setTitles] = useState([])
 
   useEffect(() => {
-    async function titleData(titles) {
-      const req = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(titles)}`)
-      const res =  await req.json()
+    async function titleData() {
+      if (!inputData) return;// evita chamada vazia
+      const req = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(inputData)}`)
+      const res = await req.json()
       setTitles(res.docs)
     }
     titleData()
-  }, [])
-  console.log(titles)
+  }, [inputData])// executa sempre que inputData mudar
 
-  
+
+
   return (
     <div >
       <InputSearch />
