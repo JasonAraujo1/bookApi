@@ -1,7 +1,9 @@
 import Context from './Context';
 import { useState } from "react";
 
-export default function  Provider({ children }) {
+import { ReactNode } from "react";
+
+export default function Provider({ children }: { children: ReactNode }) {
 
     const [inputData, setInputData] = useState([]);
 
