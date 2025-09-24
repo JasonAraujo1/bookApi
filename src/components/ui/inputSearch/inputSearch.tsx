@@ -3,6 +3,7 @@ import "./inputSearch.css"
 import Context from "../../../context/Context";
 export default function InputSearch() {
 
+
     const { setInputData } = useContext(Context);
 
     const[targetInput, setTargetInput] = useState("")

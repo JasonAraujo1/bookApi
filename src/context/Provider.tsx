@@ -5,10 +5,13 @@ import { ReactNode } from "react";
 
 export default function Provider({ children }: { children: ReactNode }) {
 
+
+
+
     const [inputData, setInputData] = useState([]);
 
     const contextValue = {
-        inputData, 
+        inputData,
         setInputData
     };
 

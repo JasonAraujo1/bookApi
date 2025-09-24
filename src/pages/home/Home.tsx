@@ -3,9 +3,17 @@ import InputSearch from "../../components/ui/inputSearch/inputSearch.js";
 import Context from "../../context/Context.js";
 import "./Home.css"
 
+type Book = {
+  author_name?: string[];
+  title?: string;
+
+};
+
 export default function Home() {
   const { inputData } = useContext(Context);
-  const [titles, setTitles] = useState([]);
+  const [titles, setTitles] = useState<Book[]>([]);
+
+
 
   useEffect(() => {
     async function titleData() {
