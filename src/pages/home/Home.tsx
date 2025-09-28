@@ -1,19 +1,18 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import InputSearch from "../../components/ui/inputSearch/inputSearch.js";
-import Context from "../../context/Context.js";
 import "./Home.css"
+import { UseAuth } from "../../context/Context.js";
 
 type Book = {
   author_name?: string[];
   title?: string;
-
 };
 
 export default function Home() {
-  const { inputData } = useContext(Context);
+
+  const { inputData, setInputData } = UseAuth()
+
   const [titles, setTitles] = useState<Book[]>([]);
-
-
 
   useEffect(() => {
     async function titleData() {

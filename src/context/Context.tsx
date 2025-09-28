@@ -1,7 +1,19 @@
 
-  import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
- 
-  const Context = createContext({});
+// 
+type AuthContextType = {
+  inputData: string,
+  setInputData: any,
+}
 
-  export default Context;
+export const Context = createContext<AuthContextType | undefined>(undefined);
+
+export function UseAuth() {
+  const context = useContext(Context)
+  
+  if (!context) {
+    throw new Error("error")
+  }
+  return context
+} 
